@@ -2,16 +2,16 @@
 IOC依赖注入
 github地址：https://github.com/feb07/IOCPro
 
-###1、概述
+### 1、概述
 什么叫IOC，控制反转（Inversion of Control，英文缩写为IOC）。IOC框架也叫控制反转框架，依赖注入框架。IOC的核心是解耦，解耦的目的是修改耦合对象时不影响另外的对象，降低关联性，从Spring来看，在Spring中IOC更多的依赖的是xml配置，而Android的IOC不使用xml配置，使用注解+反射。一个类里面有很多个成员变量，传统的写法，要用这些成员变量，就new 出来用。IOC的原则是：不要new，这样耦合度太高；配置个xml文件，里面标明哪个类，里面用了哪些成员变量，等待加载这个类的时候，注入（new）进去；
 
-###2、实现
+### 2、实现
 这里的Android IOC框架，主要是帮大家注入所有的控件，布局文件，点击事件。
 
 举个例子，一个activity有十几个view，传统做法是设置布局文件，然后一个个findViewById。现在的做法，Activity类上添加个注解，帮我们自动注入布局文件；声明View的时候，添加一行注解，然后自动帮我们findViewById。
 
-###3、编码
-######1)注入布局文件
+### 3、编码
+###### 1)注入布局文件
 
 定义注解
 ```
@@ -116,7 +116,7 @@ public static void injectLayout(Activity activity) {
 
     }
 ```
-######2）注入view
+###### 2）注入view
 定义注解
 ```
 @Target(ElementType.FIELD)
@@ -162,7 +162,7 @@ public static void injectViews(Activity activity) {
         }
     }
 ```
-######3）点击事件注入
+###### 3）点击事件注入
 正常写法:有三个要素，listener绑定方法setOnClickListener，事件类型View.OnClickListener，事件回调方法onClick
 ```
 btn.setOnClickListener(new View.OnClickListener() {
@@ -383,7 +383,7 @@ public class MainActivity extends BaseActivity {
     }
 }
 ```
-####4、github地址
+#### 4、github地址
 [https://github.com/feb07/IOCPro](https://github.com/feb07/IOCPro)
 
 
